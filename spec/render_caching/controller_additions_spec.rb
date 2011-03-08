@@ -29,7 +29,7 @@ describe RenderCaching::ControllerAdditions do
   end
   
   it "should read from the cache with request uri as key and render that text" do
-    @request.stubs(:request_uri).returns('/foo/bar')
+    @request.stubs(:fullpath).returns('/foo/bar')
     Rails.cache.write('/foo/bar', 'page content')
     expects(:render).with(:text => 'page content')
     render_with_cache

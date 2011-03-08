@@ -3,7 +3,7 @@ module RenderCaching
     private
     
     def render_with_cache(key = nil, options = nil)
-      key ||= request.request_uri
+      key ||= request.fullpath
       body = Rails.cache.read(key)
       if body
         render :text => body
